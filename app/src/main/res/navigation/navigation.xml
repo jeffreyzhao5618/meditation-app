@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.cdtgrss.meditationapp.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_timerSettingsFragment"
+            app:destination="@id/timerSettingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_journalFragment"
+            app:destination="@id/journalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.cdtgrss.meditationapp.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_timerSettingsFragment"
+            app:destination="@id/timerSettingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/timerSettingsFragment"
+        android:name="com.cdtgrss.meditationapp.TimerSettingsFragment"
+        android:label="fragment_timer_settings"
+        tools:layout="@layout/fragment_timer_settings" />
+    <fragment
+        android:id="@+id/journalFragment"
+        android:name="com.cdtgrss.meditationapp.JournalFragment"
+        android:label="fragment_journal"
+        tools:layout="@layout/fragment_journal" />
+</navigation>
