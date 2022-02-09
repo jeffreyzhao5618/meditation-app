@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">MeditationApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="h_text">h</string>
     <string name="s_text">s</string>
     <string name="m_text">m</string>
     <string name="timer_length_text">Timer Length</string>
+
+<!-- Keys for shared preferences -->
+    <string name="timer_length_key">timer_length</string>
+<!-- Default values for shared preferences -->
+    <string name="default_timer_length">0,5,0</string>
 </resources>
