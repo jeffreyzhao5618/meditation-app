@@ -5,4 +5,5 @@
     <string name="h_text">h</string>
     <string name="s_text">s</string>
     <string name="m_text">m</string>
+    <string name="timer_length_text">Timer Length</string>
 </resources>

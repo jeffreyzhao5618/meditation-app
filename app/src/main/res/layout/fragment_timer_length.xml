@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <NumberPicker
+            android:id="@+id/minute_number_picker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/m_text"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/h_text"
+            app:layout_constraintTop_toTopOf="@+id/hour_number_picker" />
+
+        <TextView
+            android:id="@+id/m_text"
+            style="@style/basic_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/m_text"
+            app:layout_constraintEnd_toStartOf="@+id/second_number_picker"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/minute_number_picker"
+            app:layout_constraintTop_toTopOf="@+id/h_text" />
+
+        <NumberPicker
+            android:id="@+id/second_number_picker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/s_text"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/m_text"
+            app:layout_constraintTop_toTopOf="@+id/minute_number_picker" />
+
+        <TextView
+            android:id="@+id/s_text"
+            style="@style/basic_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/s_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/second_number_picker"
+            app:layout_constraintTop_toTopOf="@+id/m_text" />
+
+        <TextView
+            android:id="@+id/h_text"
+            style="@style/basic_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/h_text"
+            app:layout_constraintBottom_toBottomOf="@+id/hour_number_picker"
+            app:layout_constraintEnd_toStartOf="@+id/minute_number_picker"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/hour_number_picker"
+            app:layout_constraintTop_toTopOf="@+id/hour_number_picker" />
+
+        <NumberPicker
+            android:id="@+id/hour_number_picker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/h_text"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+

@@ -7,8 +7,13 @@
         <entry key="..\:/Users/jeffr/AndroidStudioProjects/MeditationApp/app/src/main/res/layout/fragment_home.xml" value="0.176" />
         <entry key="..\:/Users/jeffr/AndroidStudioProjects/MeditationApp/app/src/main/res/layout/fragment_journal.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/jeffr/AndroidStudioProjects/MeditationApp/app/src/main/res/layout/fragment_settings.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/jeffr/AndroidStudioProjects/MeditationApp/app/src/main/res/layout/fragment_timer_length.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/jeffr/AndroidStudioProjects/MeditationApp/app/src/main/res/layout/fragment_timer_preferences.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/jeffr/AndroidStudioProjects/MeditationApp/app/src/main/res/layout/fragment_timer_settings.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/jeffr/AndroidStudioProjects/MeditationApp/app/src/main/res/layout/number_picker_preference.xml" value="0.67" />
+        <entry key="..\:/Users/jeffr/AndroidStudioProjects/MeditationApp/app/src/main/res/layout/timer_length_preference.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/jeffr/AndroidStudioProjects/MeditationApp/app/src/main/res/menu/app_menu.xml" value="0.33" />
+        <entry key="..\:/Users/jeffr/AndroidStudioProjects/MeditationApp/app/src/main/res/xml/preferences.xml" value="0.22" />
       </map>
     </option>
   </component>
