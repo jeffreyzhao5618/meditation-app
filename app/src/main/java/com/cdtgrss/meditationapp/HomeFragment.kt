@@ -42,10 +42,6 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.
             inflate<FragmentHomeBinding>(inflater, R.layout.fragment_home, container, false)
 
-        binding.timerText.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_homeFragment_to_timerSettingsFragment)
-        }
-
         // Disable action bar show hide animation
         (activity as AppCompatActivity).supportActionBar?.setShowHideAnimationEnabled(false)
 
@@ -65,9 +61,42 @@ class HomeFragment : Fragment() {
         var timer: CountDownTimer = createCountDownTimer()
 
         // Button functionality
-        binding.startButton.setOnClickListener {
+        binding.startButton.setOnClickListener { startButton: View ->
             timer.start()
+            startButton.visibility = View.INVISIBLE
+            binding.pauseButton.visibility = View.VISIBLE
+            binding.stopButton.visibility = View.VISIBLE
+            binding.resetTimerButton.visibility = View.VISIBLE
         }
+
+        binding.pauseButton.setOnClickListener { pauseButton: View ->
+            timer.cancel()
+            timer = createCountDownTimer()
+            pauseButton.visibility = View.INVISIBLE
+            binding.startButton.visibility = View.VISIBLE
+        }
+
+        binding.timerSettingsButton.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_homeFragment_to_timerSettingsFragment)
+        }
+
+        binding.resetTimerButton.setOnClickListener {
+            timer.cancel()
+            val timerLength = PreferenceManager.getDefaultSharedPreferences(activity)
+                .getString(resources.getString(R.string.timer_length_key),
+                    resources.getString(R.string.default_timer_length))!!
+                .split(',')
+            hours = timerLength[0].toInt()
+            minutes = timerLength[1].toInt()
+            seconds = timerLength[2].toInt()
+            drawTimer()
+            timer = createCountDownTimer()
+            binding.startButton.visibility = View.VISIBLE
+            binding.pauseButton.visibility = View.INVISIBLE
+        }
+
+        // TODO: Implement stop button
+        binding.stopButton.setOnClickListener {}
 
         return binding.root
     }
