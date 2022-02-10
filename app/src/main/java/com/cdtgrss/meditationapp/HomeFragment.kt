@@ -2,6 +2,8 @@ package com.cdtgrss.meditationapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +49,26 @@ class HomeFragment : Fragment() {
         // Disable action bar show hide animation
         (activity as AppCompatActivity).supportActionBar?.setShowHideAnimationEnabled(false)
 
+
+        // Set timer text based on timer length stored in shared preferences
+        // Timer length string is of the form "hour,minute,second"
+        val timerLength = PreferenceManager.getDefaultSharedPreferences(activity)
+            .getString(resources.getString(R.string.timer_length_key),
+                resources.getString(R.string.default_timer_length))!!
+            .split(',')
+        hours = timerLength[0].toInt()
+        minutes = timerLength[1].toInt()
+        seconds = timerLength[2].toInt()
+        drawTimer()
+
+        // Create CountdownTimerInstance
+        var timer: CountDownTimer = createCountDownTimer()
+
+        // Button functionality
+        binding.startButton.setOnClickListener {
+            timer.start()
+        }
+
         return binding.root
     }
 
@@ -67,29 +89,52 @@ class HomeFragment : Fragment() {
     }
 
     /**
-     * Set timer text based on timer length stored in shared preferences
-     * Timer length string is of the form "hour,minute,second"
+     * Redraw timer based on the fields: hours, minutes, and seconds
      */
-    override fun onStart() {
-        super.onStart()
-        val timerLength = PreferenceManager.getDefaultSharedPreferences(activity)
-            .getString(resources.getString(R.string.timer_length_key),
-                resources.getString(R.string.default_timer_length))!!
-            .split(',')
-        hours = timerLength[0].toInt()
-        minutes = timerLength[1].toInt()
-        seconds = timerLength[2].toInt()
-        drawTimer()
-    }
-
     private fun drawTimer() {
         binding.timerText.text = when {
             hours != 0 ->
                 "$hours:${minutes.toString().padStart(2,'0')}:" +
-                        "${seconds.toString().padStart(2, '0')}"
+                        seconds.toString().padStart(2, '0')
             minutes != 0 ->
                 "$minutes:${seconds.toString().padStart(2, '0')}"
             else -> "$seconds"
+        }
+    }
+
+    /**
+     * Create a new CountDownTimer instance based on the fields: hours, minutes, seconds.
+     * @return CountDownTimer instance that modifies hours, minutes, seconds on every
+     *         tick to match remaining time on timer, and also redraws timer on every tick.
+     */
+    private fun createCountDownTimer() : CountDownTimer {
+        var first = true
+        val totalSeconds = hours * 360 + minutes * 60 + seconds
+        Log.i("HomeFragment", totalSeconds.toString())
+        return object : CountDownTimer(totalSeconds.toLong() * 1000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                if (first) first = false // Skip the first tick
+                else {
+                    when {
+                        seconds != 0 -> seconds -= 1
+                        minutes != 0 -> {
+                            minutes -= 1
+                            seconds += 59
+                        }
+                        hours != 0 -> {
+                            hours -= 1
+                            minutes += 59
+                            seconds += 59
+                        }
+                    }
+                    drawTimer()
+                }
+
+            }
+
+            override fun onFinish() {
+                binding.timerText.text = "DONE"
+            }
         }
     }
 }
