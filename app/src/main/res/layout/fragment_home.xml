@@ -24,8 +24,8 @@
 
         <ImageButton
             android:id="@+id/start_button"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginTop="24dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/start_button_content_description"
@@ -34,6 +34,61 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/timer_text" />
+
+        <ImageButton
+            android:id="@+id/pause_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/start_button_content_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_pause"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timer_text" />
+
+        <ImageButton
+            android:id="@+id/timer_settings_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/start_button_content_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_timer"
+            app:layout_constraintBottom_toBottomOf="@+id/start_button"
+            app:layout_constraintStart_toEndOf="@+id/start_button"
+            app:layout_constraintTop_toTopOf="@+id/start_button" />
+
+        <ImageButton
+            android:id="@+id/stop_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/start_button_content_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_stop"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/start_button"
+            app:layout_constraintEnd_toStartOf="@+id/start_button"
+            app:layout_constraintTop_toTopOf="@+id/start_button" />
+
+        <ImageButton
+            android:id="@+id/reset_timer_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/start_button_content_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_reset_timer"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/start_button"
+            app:layout_constraintStart_toEndOf="@+id/start_button"
+            app:layout_constraintTop_toTopOf="@+id/start_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
