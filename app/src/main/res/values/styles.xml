@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="basic_text_style">
+    <style name="number_picker_text_style">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/meditite_lightGray</item>
     </style>
     <style name="big_text_style">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">30sp</item>
     </style>
+
+    <style name="main_timer_button">
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_marginTop">24dp</item>
+    </style>
+
+    <style name="side_timer_button">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">@drawable/button_round</item>
+    </style>
+
+
 </resources>

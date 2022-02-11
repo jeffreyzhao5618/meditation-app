@@ -2,6 +2,7 @@ package com.cdtgrss.meditationapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         // Enable up button
         NavigationUI.setupActionBarWithNavController(this, navController)
+
+        Log.i("MainActivity", supportActionBar.toString())
 
         // For debugging
 //        PreferenceManager.getDefaultSharedPreferences(this).edit().clear().commit()
