@@ -90,5 +90,19 @@
             app:layout_constraintStart_toEndOf="@+id/start_button"
             app:layout_constraintTop_toTopOf="@+id/start_button" />
 
+        <ImageButton
+            android:id="@+id/timer_finished_stop_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/start_button_content_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_stop"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timer_text" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

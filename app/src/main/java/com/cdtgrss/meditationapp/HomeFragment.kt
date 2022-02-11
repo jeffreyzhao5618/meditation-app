@@ -45,17 +45,7 @@ class HomeFragment : Fragment() {
         // Disable action bar show hide animation
         (activity as AppCompatActivity).supportActionBar?.setShowHideAnimationEnabled(false)
 
-
-        // Set timer text based on timer length stored in shared preferences
-        // Timer length string is of the form "hour,minute,second"
-        val timerLength = PreferenceManager.getDefaultSharedPreferences(activity)
-            .getString(resources.getString(R.string.timer_length_key),
-                resources.getString(R.string.default_timer_length))!!
-            .split(',')
-        hours = timerLength[0].toInt()
-        minutes = timerLength[1].toInt()
-        seconds = timerLength[2].toInt()
-        drawTimer()
+        resetTimer()
 
         // Create CountdownTimerInstance
         var timer: CountDownTimer = createCountDownTimer()
@@ -67,6 +57,7 @@ class HomeFragment : Fragment() {
             binding.pauseButton.visibility = View.VISIBLE
             binding.stopButton.visibility = View.VISIBLE
             binding.resetTimerButton.visibility = View.VISIBLE
+            binding.timerSettingsButton.visibility = View.INVISIBLE
         }
 
         binding.pauseButton.setOnClickListener { pauseButton: View ->
@@ -82,23 +73,46 @@ class HomeFragment : Fragment() {
 
         binding.resetTimerButton.setOnClickListener {
             timer.cancel()
-            val timerLength = PreferenceManager.getDefaultSharedPreferences(activity)
-                .getString(resources.getString(R.string.timer_length_key),
-                    resources.getString(R.string.default_timer_length))!!
-                .split(',')
-            hours = timerLength[0].toInt()
-            minutes = timerLength[1].toInt()
-            seconds = timerLength[2].toInt()
-            drawTimer()
+            resetTimer()
             timer = createCountDownTimer()
             binding.startButton.visibility = View.VISIBLE
             binding.pauseButton.visibility = View.INVISIBLE
         }
 
-        // TODO: Implement stop button
-        binding.stopButton.setOnClickListener {}
+        binding.stopButton.setOnClickListener { stopButton: View ->
+            timer.cancel()
+            resetTimer()
+            timer = createCountDownTimer()
+            stopButton.visibility = View.INVISIBLE
+            binding.startButton.visibility = View.VISIBLE
+            binding.timerSettingsButton.visibility = View.VISIBLE
+            binding.pauseButton.visibility = View.INVISIBLE
+            binding.resetTimerButton.visibility = View.INVISIBLE
+        }
+
+        binding.timerFinishedStopButton.setOnClickListener { timerFinishedStopButton: View ->
+            timer.cancel()
+            resetTimer()
+            timer = createCountDownTimer()
+            timerFinishedStopButton.visibility = View.INVISIBLE
+            binding.startButton.visibility = View.VISIBLE
+            binding.timerSettingsButton.visibility = View.VISIBLE
+        }
 
         return binding.root
+    }
+
+    // Set timer text based on timer length stored in shared preferences
+    // Timer length string is of the form "hour,minute,second"
+    private fun resetTimer() {
+        val timerLength = PreferenceManager.getDefaultSharedPreferences(activity)
+            .getString(resources.getString(R.string.timer_length_key),
+                resources.getString(R.string.default_timer_length))!!
+            .split(',')
+        hours = timerLength[0].toInt()
+        minutes = timerLength[1].toInt()
+        seconds = timerLength[2].toInt()
+        drawTimer()
     }
 
     /**
@@ -163,6 +177,11 @@ class HomeFragment : Fragment() {
 
             override fun onFinish() {
                 binding.timerText.text = "DONE"
+                binding.timerFinishedStopButton.visibility = View.VISIBLE
+                binding.startButton.visibility = View.INVISIBLE
+                binding.pauseButton.visibility = View.INVISIBLE
+                binding.resetTimerButton.visibility = View.INVISIBLE
+                binding.stopButton.visibility = View.INVISIBLE
             }
         }
     }
