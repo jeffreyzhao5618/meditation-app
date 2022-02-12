@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:key="timer_sound"
+        app:title="Timer Sound"
+        app:summary="Change timer sound that plays when timer finishes."/>
+
+    <SwitchPreferenceCompat
+        app:key="timer_vibrate"
+        app:title="Timer Vibrate" />
+
+</PreferenceScreen>

@@ -7,7 +7,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import androidx.preference.PreferenceManager
 import com.cdtgrss.meditationapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

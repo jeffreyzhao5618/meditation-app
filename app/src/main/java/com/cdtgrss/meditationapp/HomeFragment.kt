@@ -1,6 +1,9 @@
 package com.cdtgrss.meditationapp
 
 import android.annotation.SuppressLint
+import android.media.Ringtone
+import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
@@ -27,6 +30,8 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+    // Ringtone is played when timer finishes
+    private lateinit var ringtone: Ringtone
     // These fields track the amount of time left on timer
     private var hours = 0
     private var minutes = 0
@@ -45,7 +50,14 @@ class HomeFragment : Fragment() {
         // Disable action bar show hide animation
         (activity as AppCompatActivity).supportActionBar?.setShowHideAnimationEnabled(false)
 
+        // Draw timer with values saved in shared preferences
         resetTimer()
+
+        // Get ringtone based on uri saved in shared preferences
+        ringtone = RingtoneManager.getRingtone(activity,
+            Uri.parse(PreferenceManager.getDefaultSharedPreferences(activity)
+                    .getString(resources.getString(R.string.timer_sound_key),
+                        RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM).toString())))
 
         // Create CountdownTimerInstance
         var timer: CountDownTimer = createCountDownTimer()
@@ -91,6 +103,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.timerFinishedStopButton.setOnClickListener { timerFinishedStopButton: View ->
+            ringtone.stop()
             timer.cancel()
             resetTimer()
             timer = createCountDownTimer()
@@ -153,7 +166,6 @@ class HomeFragment : Fragment() {
     private fun createCountDownTimer() : CountDownTimer {
         var first = true
         val totalSeconds = hours * 360 + minutes * 60 + seconds
-        Log.i("HomeFragment", totalSeconds.toString())
         return object : CountDownTimer(totalSeconds.toLong() * 1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 if (first) first = false // Skip the first tick
@@ -176,6 +188,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onFinish() {
+                ringtone.play()
                 binding.timerText.text = "DONE"
                 binding.timerFinishedStopButton.visibility = View.VISIBLE
                 binding.startButton.visibility = View.INVISIBLE

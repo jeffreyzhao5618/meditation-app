@@ -9,13 +9,23 @@
         android:layout_height="match_parent">
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/timer_length_fragment_container_view"
-            android:name="com.cdtgrss.meditationapp.TimerLengthFragment"
+            android:id="@+id/timer_length_settings_fragment_container_view"
+            android:name="com.cdtgrss.meditationapp.TimerLengthSettingsFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp"
+            tools:layout_height="30dp" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/timer_preferences_settings_fragment_container_view"
+            android:name="com.cdtgrss.meditationapp.TimerPreferencesSettingsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/timer_length_settings_fragment_container_view"
+            tools:layout_editor_absoluteX="-16dp"
             tools:layout_height="30dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

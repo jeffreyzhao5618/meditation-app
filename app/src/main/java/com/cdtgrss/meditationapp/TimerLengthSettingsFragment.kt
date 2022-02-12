@@ -8,10 +8,10 @@ import android.widget.NumberPicker
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
-import com.cdtgrss.meditationapp.databinding.FragmentTimerLengthBinding
+import com.cdtgrss.meditationapp.databinding.FragmentTimerSettingsLengthBinding
 
-class TimerLengthFragment : Fragment() {
-    private lateinit var binding: FragmentTimerLengthBinding
+class TimerLengthSettingsFragment : Fragment() {
+    private lateinit var binding: FragmentTimerSettingsLengthBinding
     private var hour_changed = true
 
     override fun onCreateView(
@@ -20,7 +20,7 @@ class TimerLengthFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.
-        inflate<FragmentTimerLengthBinding>(inflater, R.layout.fragment_timer_length, container, false)
+        inflate<FragmentTimerSettingsLengthBinding>(inflater, R.layout.fragment_timer_settings_length, container, false)
 
         // Setup number pickers
         setupNumPicker(binding.hourNumberPicker, 'h')
