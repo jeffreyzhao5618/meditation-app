@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<ripple-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:color="@color/white"> &lt;!&ndash; Ripple color :: WHITE &ndash;&gt;-->
+
+<!--    <item>-->
+<!--        <shape android:shape="oval">-->
+<!--            <color android:color="@color/meditite_blue" /> &lt;!&ndash; Normal bg color :: RED &ndash;&gt;-->
+<!--        </shape>-->
+<!--    </item>-->
+
+<!--    &lt;!&ndash; Make sure the ripple doesn't exceed the bounds &ndash;&gt;-->
+<!--    <item android:id="@android:id/mask">-->
+<!--        <shape android:shape="rectangle">-->
+<!--            <solid android:color="?android:colorAccent" />-->
+<!--        </shape>-->
+<!--    </item>-->
+<!--</ripple>-->
+
+<!--<selector xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    <item android:state_pressed="false">-->
+<!--        <shape android:shape="oval">-->
+<!--            <solid android:color="@color/meditite_blue"/>-->
+<!--        </shape>-->
+<!--    </item>-->
+<!--    <item android:state_pressed="true">-->
+<!--        <shape android:shape="oval">-->
+<!--            <solid android:color="@color/meditite_lightBlue"/>-->
+<!--        </shape>-->
+<!--    </item>-->
+<!--</selector>-->
+
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval" >
+
+    <solid
+        android:color="@color/meditite_blue" />
+
+</shape>

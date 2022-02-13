@@ -6,14 +6,16 @@
         <item name="colorPrimaryVariant">@color/meditite_darkBlue</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">@color/meditite_darkGray</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/meditite_lightBlue</item>
+        <item name="android:textColorSecondary">@color/meditite_lightGray</item>
         <item name="android:navigationBarColor">@color/meditite_darkBlue</item>
+        <item name="android:solidColor">@color/meditite_darkGray</item>
     </style>
 
 </resources>

@@ -4,6 +4,8 @@
     <color name="meditite_lightBlue">#98d5f2</color>
     <color name="meditite_darkBlue">#009bc3</color>
     <color name="meditite_lightGray">#f2f3f5</color>
+    <color name="meditite_gray">#b9b8bf</color>
+    <color name="meditite_darkGray">#5b5b5b</color>
     <color name="meditite_pink">#e98893</color>
     <color name="teal_200">#90cbc4</color>
     <color name="teal_700">#00796b</color>

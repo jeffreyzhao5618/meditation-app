@@ -12,7 +12,6 @@ import com.cdtgrss.meditationapp.databinding.FragmentTimerSettingsLengthBinding
 
 class TimerLengthSettingsFragment : Fragment() {
     private lateinit var binding: FragmentTimerSettingsLengthBinding
-    private var hour_changed = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
