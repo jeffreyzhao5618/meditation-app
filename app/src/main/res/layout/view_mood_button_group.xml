@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.cdtgrss.meditationapp.MoodButton
+            android:id="@+id/btn1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ic_face_angry_regular"
+            app:iconSolidDrawable="@drawable/ic_face_angry_solid"
+            app:iconRegularDrawable="@drawable/ic_face_angry_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn2"
+            app:layout_constraintHorizontal_bias="0.123"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.cdtgrss.meditationapp.MoodButton
+            android:id="@+id/btn2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ic_face_frown_regular"
+            app:iconSolidDrawable="@drawable/ic_face_frown_solid"
+            app:iconRegularDrawable="@drawable/ic_face_frown_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn3"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintStart_toEndOf="@id/btn1" />
+
+        <com.cdtgrss.meditationapp.MoodButton
+            android:id="@+id/btn3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ic_face_meh_regular"
+            app:iconSolidDrawable="@drawable/ic_face_meh_solid"
+            app:iconRegularDrawable="@drawable/ic_face_meh_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn4"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toEndOf="@id/btn2" />
+
+        <com.cdtgrss.meditationapp.MoodButton
+            android:id="@+id/btn4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ic_face_smile_regular"
+            app:iconSolidDrawable="@drawable/ic_face_smile_solid"
+            app:iconRegularDrawable="@drawable/ic_face_smile_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn5"
+            app:layout_constraintHorizontal_bias="0.763"
+            app:layout_constraintStart_toEndOf="@id/btn3" />
+
+        <com.cdtgrss.meditationapp.MoodButton
+            android:id="@+id/btn5"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ic_face_grin_regular"
+            app:iconSolidDrawable="@drawable/ic_face_grin_solid"
+            app:iconRegularDrawable="@drawable/ic_face_grin_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.955"
+            app:layout_constraintStart_toEndOf="@id/btn4" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

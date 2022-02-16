@@ -19,7 +19,7 @@ class TimerLengthSettingsFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.
-        inflate<FragmentTimerSettingsLengthBinding>(inflater, R.layout.fragment_timer_settings_length, container, false)
+            inflate<FragmentTimerSettingsLengthBinding>(inflater, R.layout.fragment_timer_settings_length, container, false)
 
         // Setup number pickers
         setupNumPicker(binding.hourNumberPicker, 'h')

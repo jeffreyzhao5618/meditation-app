@@ -7,6 +7,7 @@
     <color name="meditite_gray">#b9b8bf</color>
     <color name="meditite_darkGray">#5b5b5b</color>
     <color name="meditite_pink">#e98893</color>
+    <color name="mood_button">@color/meditite_blue</color>
     <color name="teal_200">#90cbc4</color>
     <color name="teal_700">#00796b</color>
     <color name="black">#FF000000</color>
