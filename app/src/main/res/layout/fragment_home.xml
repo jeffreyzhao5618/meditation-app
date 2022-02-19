@@ -39,7 +39,7 @@
             style="@style/main_timer_button"
             android:contentDescription="@string/start_button_content_description"
             android:src="@drawable/ic_start"
-            app:layout_constraintBottom_toTopOf="@+id/chip4"
+            app:layout_constraintBottom_toTopOf="@+id/chip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -100,13 +100,13 @@
             app:layout_constraintTop_toTopOf="@+id/start_button" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip4"
+            android:id="@+id/chip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="32dp"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/mood_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -123,7 +123,7 @@
             app:layout_constraintBottom_toTopOf="@+id/mood_button_group"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chip4" />
+            app:layout_constraintTop_toBottomOf="@+id/chip" />
 
         <com.cdtgrss.meditationapp.MoodButtonGroup
             android:id="@+id/mood_button_group"
