@@ -1,8 +1,10 @@
 package com.cdtgrss.meditationapp
 
 import android.annotation.SuppressLint
+import android.app.ActivityManager
 import android.app.PendingIntent
 import android.app.Service
+import android.content.Context
 import android.content.Intent
 import android.media.Ringtone
 import android.media.RingtoneManager
@@ -23,28 +25,30 @@ class AlarmService : Service() {
 
     @SuppressLint("UnspecifiedImmutableFlag")
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        val fullScreenIntent = Intent(this, MainActivity::class.java)
-        val fullScreenPendingIntent = PendingIntent.getActivity(this, 0,
-            fullScreenIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        if (!appInForeground(applicationContext)) {
+            val fullScreenIntent = Intent(this, MainActivity::class.java)
+            val fullScreenPendingIntent = PendingIntent.getActivity(this, 0,
+                fullScreenIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-        val notificationBuilder =
-            NotificationCompat.Builder(this, "alarm_channel")
-                .setSmallIcon(R.drawable.ic_timer)
-                .setContentTitle("Time's up")
-                .setContentText("(919) 555-1234")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_ALARM)
+            val notificationBuilder =
+                NotificationCompat.Builder(this, "alarm_channel")
+                    .setSmallIcon(R.drawable.ic_timer)
+                    .setContentTitle("Time's up")
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setCategory(NotificationCompat.CATEGORY_ALARM)
+                    .setSound(null)
 
-                // Use a full-screen intent only for the highest-priority alerts where you
-                // have an associated activity that you would like to launch after the user
-                // interacts with the notification. Also, if your app targets Android 10
-                // or higher, you need to request the USE_FULL_SCREEN_INTENT permission in
-                // order for the platform to invoke this notification.
-                .setFullScreenIntent(fullScreenPendingIntent, true)
+                    // Use a full-screen intent only for the highest-priority alerts where you
+                    // have an associated activity that you would like to launch after the user
+                    // interacts with the notification. Also, if your app targets Android 10
+                    // or higher, you need to request the USE_FULL_SCREEN_INTENT permission in
+                    // order for the platform to invoke this notification.
+                    .setFullScreenIntent(fullScreenPendingIntent, true)
 
-        val incomingCallNotification = notificationBuilder.build()
+            val incomingCallNotification = notificationBuilder.build()
 
-        startForeground(1337, incomingCallNotification)
+            startForeground(1337, incomingCallNotification)
+        }
 
         Log.i("AlarmService", "onStartCommand")
 
@@ -63,5 +67,18 @@ class AlarmService : Service() {
         super.onDestroy()
         ringtone?.stop()
         Log.i("ALarmService", "destroyed")
+    }
+
+    /**
+     * Check if app is currently running
+     *
+     * Taken from:
+     *  https://stackoverflow.com/questions/43378841/
+     *      check-if-app-is-running-in-foreground-or-background-with-sync-adapter
+     */
+    private fun appInForeground(context: Context): Boolean {
+        val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val runningAppProcesses = activityManager.runningAppProcesses ?: return false
+        return runningAppProcesses.any { it.processName == context.packageName && it.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND }
     }
 }
