@@ -19,8 +19,8 @@ class AlarmReceiver() : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
 
 
-        val startIntent = Intent(context, AlarmService::class.java)
-        context!!.startService(startIntent)
+        val serviceIntent = Intent(context, AlarmService::class.java)
+        context!!.startService(serviceIntent)
 
 //        val startIntent = context!!.packageManager.getLaunchIntentForPackage(context.packageName)
 //

@@ -120,6 +120,10 @@ class HomeFragment : Fragment() {
             timerFinishedStopButton.visibility = View.INVISIBLE
             binding.startButton.visibility = View.VISIBLE
             binding.timerSettingsButton.visibility = View.VISIBLE
+
+            // Stop the service
+            val serviceIntent = Intent(context, AlarmService::class.java)
+            context!!.stopService(serviceIntent)
         }
 
         Log.i("HomeFragment", "onCreateView")
@@ -260,7 +264,7 @@ class HomeFragment : Fragment() {
             putBoolean("timer_started_paused", false).apply()
             putLong("timer_started_end_time", System.currentTimeMillis() + timeInMillis).apply()
         }
-//        scheduleAlarmClock()
+        scheduleAlarmClock()
         timer?.start()
     }
 
@@ -279,6 +283,7 @@ class HomeFragment : Fragment() {
             putInt("timer_started_paused_time", timeInSeconds).apply()
         }
 
+        cancelAlarmClock()
         timer?.cancel()
         timer = createCountDownTimer()
     }
@@ -294,7 +299,7 @@ class HomeFragment : Fragment() {
             putBoolean("timer_started_paused", false).apply()
         }
 
-//        cancelAlarmClock()
+        cancelAlarmClock()
         timer?.cancel()
     }
 
@@ -371,5 +376,7 @@ class HomeFragment : Fragment() {
                 = activity!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         alarmManager.cancel(pendingIntent)
+
+
     }
 }
