@@ -37,6 +37,7 @@ class AlarmService : Service() {
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setCategory(NotificationCompat.CATEGORY_ALARM)
                     .setSound(null)
+                    .setDefaults(0)
 
                     // Use a full-screen intent only for the highest-priority alerts where you
                     // have an associated activity that you would like to launch after the user
@@ -79,6 +80,8 @@ class AlarmService : Service() {
     private fun appInForeground(context: Context): Boolean {
         val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         val runningAppProcesses = activityManager.runningAppProcesses ?: return false
-        return runningAppProcesses.any { it.processName == context.packageName && it.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND }
+        return runningAppProcesses
+            .any { it.processName == context.packageName
+                    && it.importance== ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND }
     }
 }

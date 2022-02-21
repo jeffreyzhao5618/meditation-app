@@ -28,11 +28,12 @@ class MainActivity : AppCompatActivity() {
         // Notification channel
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create the NotificationChannel
-            val name = "This is the name"
-            val descriptionText = "This is a description"
+            val name = "Timer"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val mChannel = NotificationChannel("alarm_channel", name, importance)
-            mChannel.description = descriptionText
+            mChannel.setSound(null, null)
+            mChannel.enableLights(false);
+            mChannel.enableVibration(false);
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
             val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
