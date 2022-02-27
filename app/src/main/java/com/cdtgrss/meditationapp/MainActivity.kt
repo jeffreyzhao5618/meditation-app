@@ -31,9 +31,10 @@ class MainActivity : AppCompatActivity() {
             val name = "Timer"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val mChannel = NotificationChannel("alarm_channel", name, importance)
+            // Notification should not have sound by default
             mChannel.setSound(null, null)
-            mChannel.enableLights(false);
-            mChannel.enableVibration(false);
+            mChannel.enableLights(false)
+            mChannel.enableVibration(false)
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
             val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager

@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".TimerSettingsFragment">
+    tools:context=".screens.timersettings.TimerSettingsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -10,7 +10,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/timer_length_settings_fragment_container_view"
-            android:name="com.cdtgrss.meditationapp.TimerLengthSettingsFragment"
+            android:name="com.cdtgrss.meditationapp.screens.timersettings.TimerLengthSettingsFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
@@ -20,7 +20,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/timer_preferences_settings_fragment_container_view"
-            android:name="com.cdtgrss.meditationapp.TimerPreferencesSettingsFragment"
+            android:name="com.cdtgrss.meditationapp.screens.timersettings.TimerPreferencesSettingsFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"

@@ -1,4 +1,4 @@
-package com.cdtgrss.meditationapp
+package com.cdtgrss.meditationapp.screens.timersettings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.preference.PreferenceFragmentCompat
-import com.cdtgrss.meditationapp.databinding.FragmentHomeBinding
+import com.cdtgrss.meditationapp.R
 import com.cdtgrss.meditationapp.databinding.FragmentTimerSettingsBinding
 
 /**
@@ -25,7 +24,8 @@ class TimerSettingsFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.
-            inflate<FragmentTimerSettingsBinding>(inflater, R.layout.fragment_timer_settings, container, false)
+            inflate<FragmentTimerSettingsBinding>(inflater,
+                R.layout.fragment_timer_settings, container, false)
 
         // Inflate the layout for this fragment
         return binding.root

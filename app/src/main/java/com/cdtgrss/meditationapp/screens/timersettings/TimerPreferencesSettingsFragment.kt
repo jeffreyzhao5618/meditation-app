@@ -1,4 +1,4 @@
-package com.cdtgrss.meditationapp
+package com.cdtgrss.meditationapp.screens.timersettings
 
 import android.app.Activity
 import android.content.Context
@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import com.cdtgrss.meditationapp.R
 
 class TimerPreferencesSettingsFragment : PreferenceFragmentCompat() {
 

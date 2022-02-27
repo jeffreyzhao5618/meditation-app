@@ -1,5 +1,6 @@
-package com.cdtgrss.meditationapp
+package com.cdtgrss.meditationapp.screens.timersettings
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,14 @@ import android.widget.NumberPicker
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
+import com.cdtgrss.meditationapp.Constants
+import com.cdtgrss.meditationapp.R
 import com.cdtgrss.meditationapp.databinding.FragmentTimerSettingsLengthBinding
+import com.cdtgrss.meditationapp.screens.timer.MyTimer
 
 class TimerLengthSettingsFragment : Fragment() {
     private lateinit var binding: FragmentTimerSettingsLengthBinding
+    private lateinit var sp: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -19,7 +24,10 @@ class TimerLengthSettingsFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.
-            inflate<FragmentTimerSettingsLengthBinding>(inflater, R.layout.fragment_timer_settings_length, container, false)
+            inflate<FragmentTimerSettingsLengthBinding>(inflater,
+                R.layout.fragment_timer_settings_length, container, false)
+
+        sp = PreferenceManager.getDefaultSharedPreferences(activity)
 
         // Setup number pickers
         setupNumPicker(binding.hourNumberPicker, 'h')
@@ -31,17 +39,6 @@ class TimerLengthSettingsFragment : Fragment() {
 
     /**
      * This function is used to setup the three number pickers used to change the timer's value.
-     *
-     * When number picker is changed get the old persisted string with key "timer_length"
-     * and update it.
-     *
-     * Persisted value contained in shared preferences is a comma seperated string of the form
-     * hours,minutes,seconds where:
-     *      hours - number of hours in timer length
-     *      minutes - number of minutes in timer length
-     *      seconds - number of seconds in timer length
-     *
-     * When value of a number picker is changed update the persisted string in shared preferences
      *
      * @param numberPicker The NumberPicker to setup
      * @param type char that is used to figure out key of persisted int to get
@@ -55,25 +52,27 @@ class TimerLengthSettingsFragment : Fragment() {
             'm' -> 1
             else -> 2
         }
-        val key = resources.getString(R.string.timer_length_key)
-        val defaultValue = resources.getString(R.string.default_timer_length)
+        val timeArray =
+            MyTimer.getTimeArray(sp.getInt(Constants.KEY_TIMER_LENGTH, Constants.DEFAULT_TIMER_LENGTH))
+
         numberPicker.apply {
             minValue = 0
             maxValue = 59
             displayedValues =
                 resources.getStringArray(R.array.timer_settings_num_picker_string_array)
-            value = PreferenceManager.getDefaultSharedPreferences(activity)
-                .getString(key, defaultValue)!!.split(',')[index].toInt()
-
-            setOnValueChangedListener { _: NumberPicker, _: Int, newValue: Int ->
-                val sharedPreferences =
-                    PreferenceManager.getDefaultSharedPreferences(activity)
-                val oldPersistValue = sharedPreferences
-                    .getString(key, defaultValue)!!.split(',').toMutableList()
-                oldPersistValue[index] = newValue.toString()
-                val newPersistValue = oldPersistValue.joinToString(",")
-                sharedPreferences.edit().putString(key, newPersistValue).apply()
-            }
+            value = timeArray[index]
         }
+    }
+
+    /**
+     * When fragment is stopped calculate the total number of seconds displayed by
+     * the three number pickers and write to shared preferences
+     */
+    override fun onStop() {
+        super.onStop()
+        val totalSeconds = binding.hourNumberPicker.value * 3600 +
+            binding.minuteNumberPicker.value * 60 +
+            binding.secondNumberPicker.value
+        sp.edit().putInt(Constants.KEY_TIMER_LENGTH, totalSeconds).commit()
     }
 }
